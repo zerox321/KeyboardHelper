@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        KeyboardStateEvent.setEventListener(activity = this, lifecycleOwner = this) { isVisible -> navView.isVisible = !isVisible }
+//        KeyboardStateEvent.setEventListener(activity = this, lifecycleOwner = this) { isVisible -> navView.isVisible = !isVisible }
 
     }
 }

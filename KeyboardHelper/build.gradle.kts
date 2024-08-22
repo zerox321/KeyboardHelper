@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.de.undercouch.gradle.tasks.download.org.apache.commons.logging.LogFactory.release
-import java.util.Date.from
 
 plugins {
     alias(libs.plugins.android.library)
@@ -20,7 +18,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
@@ -43,19 +41,20 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "com.zerox.keyboard"
-                artifactId = "keyboard-helper"
-                version = "1.0.1"
-            }
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["release"])
+            groupId = "com.github.zerox321"
+            artifactId = "KeyboardHelper"
+            version = "1.0.3"
         }
-        repositories {
-            maven {
-                url = uri("file://$buildDir/repo")
-            }
+    }
+    repositories {
+        maven {
+            url = uri("https://jitpack.io")
         }
+    }
     }
 }
